@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr Valentyno | Distribuer l'Amour dans le Monde</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root { --red: #8B0000; --gold: #B8962E; }
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .heading { font-family: 'Playfair Display', serif; }
+
+        .hero-video {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: -2;
+        }
+        .fade-up {
+            opacity: 0; transform: translateY(60px);
+            transition: all 1.1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        .music-card, .vip-card {
+            transition: all 0.4s ease;
+        }
+        .music-card:hover, .vip-card:hover {
+            transform: translateY(-12px);
+        }
+        .vip-card.popular {
+            border: 3px solid var(--red);
+            transform: scale(1.05);
+        }
+
+        #custom-player {
+            position: relative;
+            background: #111;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgb(139 0 0 / 0.4);
+        }
+        .yt-controls {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        #custom-player:hover .yt-controls { opacity: 1; }
+        @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    animation: marquee 40s linear infinite;
+    display: flex;
+    align-items: center;
+}
+
+#news-ticker:hover {
+    animation-play-state: paused;
+}
+    </style>
+</head>
+<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-black/95 backdrop-blur-lg z-50 border-b border-red-900/30">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-red-900 rounded-2xl flex items-center justify-center text-3xl font-black">V</div>
+                <span class="heading text-3xl tracking-tighter">MR VALENTYNO</span>
+            </div>
+            <div class="hidden md:flex gap-10 text-sm uppercase tracking-widest font-medium">
+                <a href="#bio">Biographie</a>
+                <a href="#musique">Musique</a>
+                <a href="#val-event">Val Event</a>
+                <a href="#fanclub">Fan Club VIP</a>
+                <a href="#Valentyno Gaming & Challenges">Valentyno Gaming & Challenges</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="#contact" class="px-8 py-3.5 bg-red-900 hover:bg-red-800 rounded-3xl text-sm font-medium transition">BOOKING</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+        <iframe class="hero-video" src="https://www.youtube.com/embed/_lcmcY_jEMw?autoplay=1&mute=1&loop=1&playlist=_lcmcY_jEMw&controls=0&modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <h1 class="heading text-7xl md:text-[6.5rem] leading-none font-bold tracking-[-4px] mb-6">VALENTYNO</h1>
+            <p class="text-4xl md:text-5xl text-red-300">"Distribuer l’amour dans le monde"</p>
+        </div>
+    </header>
+    <!-- ←←← AJOUTE ICI LA SECTION TICKER →→→ -->
+
+<!-- BIOGRAPHIE -->
+<section id="bio" ...>
+
+  <!-- FIL D'ACTUALITÉ - TICKER CONTINU (CORRIGÉ) -->
+<section class="bg-black py-4 border-b border-red-900/50 overflow-hidden">
+    <div class="flex items-center">
+        <div class="bg-red-600 text-white text-sm font-medium px-6 py-2.5 whitespace-nowrap z-10">
+            ACTUALITÉS EN DIRECT
+        </div>
+        
+        <div class="overflow-hidden flex-1 relative">
+            <div id="news-ticker" class="flex items-center gap-16 text-sm whitespace-nowrap animate-marquee">
+                <!-- Premier groupe -->
+                <span>   Eurotour 2026 — Allemagne • France • Belgique • Canada</span>
+                <span>  "L'Amour Me Tient" — Single Officiel disponible partout</span>
+                <span>   Paris Olympia — 15 Juillet 2026</span>
+                <span>   Live in Canada (Aline) — Vidéo qui cartonne</span>
+                <span>   Prochain concert à Edmundston</span>
+                
+                <!-- Deuxième groupe (duplication pour boucle infinie) -->
+                <span>   Eurotour 2026 — Allemagne • France • Belgique • Canada</span>
+                <span>  "L'Amour Me Tient" — Single Officiel disponible partout</span>
+                <span>   Paris Olympia — 15 Juillet 2026</span>
+                <span>   Live in Canada (Aline) — Vidéo qui cartonne</span>
+                <span>   Prochain concert à Edmundston</span>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ÉCOUTE RAPIDEMENT - PLATEFORMES -->
+<section class="bg-black py-8 border-b border-red-900/30">
+    <div class="max-w-7xl mx-auto px-8">
+        <p class="text-center text-gray-400 text-sm mb-6 tracking-widest">ÉCOUTE RAPIDEMENT</p>
+        
+        <div class="flex items-center justify-center gap-12 md:gap-16 overflow-x-auto pb-4 scrollbar-hide">
+            
+            <!-- Spotify -->
+            <a href="https://open.spotify.com/search/Mr%20Valentyno" target="_blank" 
+               class="flex flex-col items-center group">
+                <div class="w-14 h-14 bg-green-500 rounded-2xl flex items-center justify-center text-4xl transition-transform group-hover:scale-110">
+                    <i class="fab fa-spotify"></i>
+                </div>
+                <span class="text-xs mt-2 text-green-400">Spotify</span>
+            </a>
+
+            <!-- Apple Music -->
+            <a href="https://music.apple.com/search?term=Mr+Valentyno" target="_blank" 
+               class="flex flex-col items-center group">
+                <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-purple-600 rounded-2xl flex items-center justify-center text-4xl transition-transform group-hover:scale-110">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <span class="text-xs mt-2">Apple Music</span>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/results?search_query=Mr+Valentyno" target="_blank" 
+               class="flex flex-col items-center group">
+                <div class="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center text-4xl transition-transform group-hover:scale-110">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <span class="text-xs mt-2">YouTube</span>
+            </a>
+
+            <!-- YouTube Music -->
+            <a href="https://music.youtube.com/search?q=Mr+Valentyno" target="_blank" 
+               class="flex flex-col items-center group">
+                <div class="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center text-4xl transition-transform group-hover:scale-110">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <span class="text-xs mt-2">YT Music</span>
+            </a>
+
+            <!-- Deezer -->
+            <a href="https://www.deezer.com/search/Mr%20Valentyno" target="_blank" 
+               class="flex flex-col items-center group">
+                <div class="w-14 h-14 bg-purple-600 rounded-2xl flex items-center justify-center text-3xl font-bold transition-transform group-hover:scale-110">
+                    D
+                </div>
+                <span class="text-xs mt-2">Deezer</span>
+            </a>
+        </div>
+    </div>
+</section>
+    <!-- BIOGRAPHIE -->
+    <section id="bio" class="py-28 bg-zinc-950">
+        <div class="max-w-6xl mx-auto px-8">
+            <h2 class="heading text-6xl text-center mb-16 fade-up">Biographie</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-stretch">
+                <!-- Image à gauche -->
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl fade-up">
+                    <img src="images/valentino.jpeg" class="w-full h-full object-cover" alt="Mr Valentyno">
+                </div>
+                <!-- Texte à droite -->
+                <div class="prose prose-invert text-lg leading-relaxed fade-up flex flex-col justify-center">
+                    <p>Valentino Nguelieu, connu sous le nom de scène <strong>Mr Valentyno</strong>, est un artiste complet qui incarne avec grâce la rencontre entre les racines profondes de l’Afrique et l’horizon vaste du Canada.</p>
+                    <p>Né il y a 24 ans au Cameroun, ce jeune homme au charisme magnétique et à la voix grave, chaude et enveloppante, a su transformer son parcours migratoire en une véritable odyssée artistique.</p>
+                    <p>Porteur d’un héritage culturel riche, il puise dans les rythmes du ndombolo, les mélodies gospel et les traditions orales de son pays natal pour créer une pop romantique africaine résolument moderne. Son slogan, <strong>« Distribuer l’Amour dans le Monde »</strong>, n’est pas une simple formule, c’est une mission qu’il porte avec sincérité et conviction.</p>
+                    <p>Révélé en 2024 au Gala de la chanson de Caraquet, il a rapidement conquis les scènes de l’Est canadien avant de s’imposer comme l’une des voix les plus prometteuses de la nouvelle génération afro-canadienne. Entrepreneur passionné, il a fondé <strong>Val Event (MV Music Production)</strong>, une structure qui allie excellence artistique et organisation d’événements haut de gamme.</p>
+                    <p>Aujourd’hui, à seulement 24 ans, Mr Valentyno incarne cette nouvelle génération d’artistes qui refusent les frontières. Sa voix ne fait pas que chanter. Elle guérit, elle unit, elle élève.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LECTEUR OFFICIEL -->
+<section id="musique" class="py-28 bg-black">
+    <div class="max-w-6xl mx-auto px-8">
+        <h2 class="heading text-6xl text-center mb-16 fade-up">Lecteur Officiel</h2>
+        
+        <!-- Lecteur vidéo principal -->
+        <div id="custom-player" class="max-w-4xl mx-auto mb-16">
+            <iframe id="yt-player" width="100%" height="480"
+                src="https://www.youtube.com/embed/_lcmcY_jEMw?enablejsapi=1&controls=0&modestbranding=1&rel=0"
+                frameborder="0" allowfullscreen></iframe>
+            
+            <div class="yt-controls text-white">
+                <button onclick="togglePlay()" class="text-4xl hover:text-red-500 transition"><i class="fas fa-play" id="play-icon"></i></button>
+                <button onclick="prevTrack()" class="text-3xl hover:text-red-500 transition"><i class="fas fa-step-backward"></i></button>
+                <button onclick="nextTrack()" class="text-3xl hover:text-red-500 transition"><i class="fas fa-step-forward"></i></button>
+                
+                <div class="flex-1 mx-6 h-1 bg-zinc-700 rounded-full relative cursor-pointer" onclick="seek(event)">
+                    <div id="progress" class="absolute h-1 bg-red-600 rounded-full w-0"></div>
+                </div>
+                <span id="time" class="text-sm font-mono">0:00 / 3:45</span>
+            </div>
+        </div>
+
+        <!-- Les 6 Clips Officiels -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div onclick="playVideo('_lcmcY_jEMw')" class="music-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
+                <img src="images/tiens.jpg" class="w-full h-56 object-cover" alt="">
+                <div class="p-6"><h3 class="text-xl font-medium">L'Amour Me Tient</h3></div>
+            </div>
+            <div onclick="playVideo('J19OvHLCQMM')" class="music-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
+                <img src="images/carlos.jpeg" class="w-full h-56 object-cover" alt="">
+                <div class="p-6"><h3 class="text-xl font-medium">Je t'aime encore</h3></div>
+            </div>
+            <div onclick="playVideo('YiFMq-2jdxM')" class="music-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
+                <img src="images/aime.jpeg" class="w-full h-56 object-cover" alt="">
+                <div class="p-6"><h3 class="text-xl font-medium">Je l'aime à mourir</h3></div>
+            </div>
+            <div onclick="playVideo('60IsalpFQ9Y')" class="music-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
+                <img src="images/lossie.jpeg" class="w-full h-56 object-cover" alt="">
+                <div class="p-6"><h3 class="text-xl font-medium">Lossiè Africa</h3></div>
+            </div>
+            <div onclick="playVideo('aBZMv67GklA')" class="music-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
+                <img src="images/live.jpeg" class="w-full h-56 object-cover" alt="">
+                <div class="p-6"><h3 class="text-xl font-medium">Live in Canada (Aline)</h3></div>
+            </div>
+            <div onclick="playVideo('8EXcWs_CEl8')" class="music-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
+                <img src="images/bouquet.jpeg" class="w-full h-56 object-cover" alt="">
+                <div class="p-6"><h3 class="text-xl font-medium">Bouquet de Fleurs (Cover)</h3></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- VAL EVENT - VERSION ANIMÉE -->
+<section id="val-event" class="py-28 bg-zinc-950 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-8">
+        <h2 class="heading text-6xl text-center mb-6 fade-up">Val Event</h2>
+        <p class="text-center text-2xl text-red-400 mb-16 fade-up">MV Music Production</p>
+        
+        <p class="text-center text-xl text-gray-300 max-w-2xl mx-auto mb-16">
+            Distributeur d’amour en chanson pour tous vos événements
+        </p>
+
+        <!-- Services avec défilement horizontal -->
+        <div id="services-scroll" class="flex gap-8 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide">
+            
+            <!-- Service 1 -->
+            <div onclick="showServiceDetail(0)" class="service-card min-w-[320px] bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer snap-start">
+                <img src="images/mariage.jpeg" class="w-full h-64 object-cover" alt="Mariage">
+                <div class="p-8">
+                    <h3 class="text-2xl font-medium mb-3">Mariages</h3>
+                    <p class="text-gray-400">Sérénades romantiques, première danse et moments inoubliables.</p>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div onclick="showServiceDetail(1)" class="service-card min-w-[320px] bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer snap-start">
+                <img src="images/gala.jpeg" class="w-full h-64 object-cover" alt="Gala">
+                <div class="p-8">
+                    <h3 class="text-2xl font-medium mb-3">Soirées de Gala</h3>
+                    <p class="text-gray-400">Performances élégantes et haut de gamme.</p>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div onclick="showServiceDetail(2)" class="service-card min-w-[320px] bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer snap-start">
+                <img src="images/aniversaire.jpeg" class="w-full h-64 object-cover" alt="Anniversaire">
+                <div class="p-8">
+                    <h3 class="text-2xl font-medium mb-3">Anniversaires Surprise</h3>
+                    <p class="text-gray-400">Émotions fortes et souvenirs uniques.</p>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div onclick="showServiceDetail(3)" class="service-card min-w-[320px] bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer snap-start">
+                <img src="images/orc.jpeg" class="w-full h-64 object-cover" alt="Privé">
+                <div class="p-8">
+                    <h3 class="text-2xl font-medium mb-3">Événements Privés</h3>
+                    <p class="text-gray-400">Fêtes, corporate, piano bar...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- LOVE ARMY - FEED HORIZONTAL -->
+<section id="fanclub" class="py-28 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-12">
+            <h2 class="heading text-6xl mb-4">Love Army</h2>
+            <p class="text-red-400 text-2xl">La communauté officielle de Mr Valentyno</p>
+        </div>
+
+        <!-- Formulaire de Publication -->
+        <div class="bg-zinc-900 rounded-3xl p-8 mb-12 max-w-2xl mx-auto">
+            <h3 class="text-xl mb-6 text-center">Partage ta vidéo avec la Love Army</h3>
+            <form id="post-form" class="space-y-6">
+                <input type="text" id="post-username" placeholder="Ton pseudo TikTok" class="w-full bg-zinc-800 rounded-2xl px-6 py-4" required>
+                <input type="url" id="post-video" placeholder="Lien de ta vidéo TikTok / Reels" class="w-full bg-zinc-800 rounded-2xl px-6 py-4" required>
+                <textarea id="post-caption" rows="2" placeholder="Que penses-tu de cette vidéo ?" class="w-full bg-zinc-800 rounded-2xl px-6 py-4"></textarea>
+                <button type="submit" class="w-full py-5 bg-red-600 hover:bg-red-700 rounded-3xl text-lg font-medium">Publier</button>
+            </form>
+        </div>
+
+        <!-- Feed Horizontal -->
+        <h3 class="text-2xl mb-8">Activité de la Love Army </h3>
+        <div id="fan-feed" class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide">
+            <!-- Les posts apparaîtront ici horizontalement -->
+        </div>
+    </div>
+</section>
+<!-- VALENTYNO GAMING & CHALLENGES -->
+<section class="py-28 bg-black">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 class="heading text-6xl mb-4">Valentyno Gaming</h2>
+            <p class="text-red-400 text-2xl">Crée, joue et gagne avec la Love Army</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Challenge 1 -->
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden group">
+                <img src="images/challenge.jpeg" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="p-8">
+                    <h3 class="text-2xl mb-3">#LamourMeTientChallenge</h3>
+                    <p class="text-gray-400 mb-6">Filme ta réaction en écoutant le refrain. Le meilleur gagne un shoutout !</p>
+                    <a href="#" class="block text-center bg-red-600 py-4 rounded-2xl hover:bg-red-700">Participer maintenant</a>
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden group">
+                <img src="images/couplet.jpeg" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="p-8">
+                    <h3 class="text-2xl mb-3">Cover Challenge</h3>
+                    <p class="text-gray-400 mb-6">Chante un couplet de n’importe quelle chanson de Valentyno.</p>
+                    <a href="#" class="block text-center bg-red-600 py-4 rounded-2xl hover:bg-red-700">Participer maintenant</a>
+                </div>
+            </div>
+
+            <!-- Quiz -->
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden group">
+                <img src="images/quiz.jpeg" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="p-8">
+                    <h3 class="text-2xl mb-3">Quiz Valentyno</h3>
+                    <p class="text-gray-400 mb-6">Teste tes connaissances sur sa musique et gagne des points Love Army.</p>
+                    <a href="#" class="block text-center bg-red-600 py-4 rounded-2xl hover:bg-red-700">Jouer au Quiz</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-16">
+            <p class="text-gray-400">Les meilleurs contenus seront repostés par Mr Valentyno lui-même !</p>
+        </div>
+    </div>
+</section>
+<!-- CONTACT -->
+<section id="contact" class="py-28 bg-black">
+    <div class="max-w-7xl mx-auto px-8">
+        <h2 class="heading text-6xl text-center mb-16 fade-up">Contact & Booking</h2>
+        
+        <div class="grid md:grid-cols-2 gap-16">
+            
+            <!-- Formulaire de Contact -->
+            <div>
+                <h3 class="text-3xl mb-8">Envoyez un message</h3>
+                <form id="contact-form" onsubmit="sendContact(event)" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input type="text" id="contact_name" placeholder="Votre nom" required 
+                               class="bg-zinc-900 border border-white/20 rounded-2xl px-8 py-6">
+                        <input type="email" id="contact_email" placeholder="Votre email" required 
+                               class="bg-zinc-900 border border-white/20 rounded-2xl px-8 py-6">
+                    </div>
+                    <input type="text" id="contact_subject" placeholder="Sujet (Booking, Collaboration, Suggestion...)" 
+                           class="w-full bg-zinc-900 border border-white/20 rounded-2xl px-8 py-6">
+                    <textarea id="contact_message" rows="6" placeholder="Votre message..." required
+                              class="w-full bg-zinc-900 border border-white/20 rounded-2xl px-8 py-6"></textarea>
+                    
+                    <button type="submit" id="contact-btn" 
+                            class="w-full py-7 bg-red-600 hover:bg-red-700 text-xl rounded-3xl transition">
+                        Envoyer le message
+                    </button>
+                </form>
+            </div>
+
+            <!-- Informations de Contact -->
+            <div class="space-y-10">
+                <div>
+                    <h3 class="text-3xl mb-8">Informations Directes</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="text-4xl">📧</div>
+                            <div>
+                                <p class="font-medium">Email</p>
+                                <a href="mailto:contact@mrvalentyno.com" class="text-red-400 hover:underline">contact@mrvalentyno.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-6">
+                            <div class="text-4xl">📱</div>
+                            <div>
+                                <p class="font-medium">Téléphone / WhatsApp</p>
+                                <a href="https://wa.me/14386990334" target="_blank" class="text-red-400 hover:underline">+1 (438) 699-0334</a>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="text-4xl">📍</div>
+                            <div>
+                                <p class="font-medium">Adresse</p>
+                                <p class="text-gray-400">Edmundston, Nouveau-Brunswick<br>Canada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte Google Maps -->
+                <div>
+                    <h4 class="text-xl mb-4">Nous trouver</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2243.5!2d-68.3282!3d47.3737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ca8b0f0f0f0f0f0%3A0x0!2sEdmundston%2C%20NB%2C%20Canada!5e0!3m2!1sfr!2sca!4v123456789" 
+                            width="100%" height="300" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+            
+            
+            </div>
+        </div>
+    </div>
+</section>
+<!-- MODAL DÉTAIL SERVICE -->
+<div id="service-modal" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center">
+    <div class="max-w-5xl w-full mx-4 bg-zinc-900 rounded-3xl overflow-hidden">
+        <div class="flex justify-end p-4">
+            <button onclick="closeModal()" class="text-4xl text-gray-400 hover:text-white">×</button>
+        </div>
+        
+        <div id="modal-content" class="px-8 pb-12"></div>
+    </div>
+</div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-16 border-t border-red-900/30">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-500">© 2026 Mr Valentyno &amp; MV Music Production (Val Event) — Edmundston, Nouveau-Brunswick, Canada</p>
+        </div>
+    </footer>
+
+    <script>
+        // EmailJS
+        (function() {
+            emailjs.init("VOTRE_PUBLIC_KEY");
+        })();
+
+        async function sendEmail(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = 'Envoi en cours...';
+            btn.disabled = true;
+            const templateParams = {
+                from_name: document.getElementById('user_name').value,
+                from_email: document.getElementById('user_email').value,
+                message: document.getElementById('message').value
+            };
+            try {
+                await emailjs.send('VOTRE_SERVICE_ID', 'VOTRE_TEMPLATE_ID', templateParams);
+                alert("✅ Message envoyé avec succès !");
+                e.target.reset();
+            } catch (error) {
+                alert("❌ Erreur lors de l'envoi.");
+            }
+            btn.innerHTML = 'Envoyer';
+            btn.disabled = false;
+        }
+
+        // Lecteur YouTube
+        let player;
+        let currentTrack = 0;
+        const playlist = ["_lcmcY_jEMw", "J19OvHLCQMM", "YiFMq-2jdxM", "60IsalpFQ9Y", "aBZMv67GklA", "8EXcWs_CEl8"];
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                events: {
+                    'onReady': () => console.log("✅ Lecteur prêt"),
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerStateChange(event) {
+            const icon = document.getElementById('play-icon');
+            icon.classList.toggle('fa-play', event.data !== 1);
+            icon.classList.toggle('fa-pause', event.data === 1);
+        }
+
+        function togglePlay() {
+            if (!player) return;
+            player.getPlayerState() === 1 ? player.pauseVideo() : player.playVideo();
+        }
+
+        function playVideo(videoId) {
+            if (player) player.loadVideoById(videoId);
+        }
+
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+            playVideo(playlist[currentTrack]);
+        }
+
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            playVideo(playlist[currentTrack]);
+        }
+
+        function seek(e) {
+            if (!player) return;
+            const rect = e.currentTarget.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            player.seekTo(player.getDuration() * percent);
+        }
+
+        // Charger YouTube API
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.getElementsByTagName('script')[0].parentNode.insertBefore(tag, document.getElementsByTagName('script')[0]);
+
+        // Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // === ANIMATIONS VAL EVENT ===
+    const servicesData = [
+        { title: "Mariages", desc: "Sérénades romantiques, première danse et animation complète.", images: ["images/IMG_5939.jpeg","images/IMG_5944.jpeg"], videos: ["_lcmcY_jEMw","aBZMv67GklA"] },
+        { title: "Soirées de Gala", desc: "Performances élégantes pour vos événements prestigieux.", images: ["images/IMG_5940.jpeg"], videos: ["YiFMq-2jdxM"] },
+        { title: "Anniversaires Surprise", desc: "Moments chargés d’émotion pour vos proches.", images: ["images/IMG_5944.jpeg","images/IMG_5939.jpeg"], videos: ["J19OvHLCQMM"] },
+        { title: "Événements Privés", desc: "Fêtes privées, corporate, piano bar et plus.", images: ["images/IMG_5938.jpeg"], videos: ["8EXcWs_CEl8"] }
+    ];
+
+    function showServiceDetail(index) {
+        const s = servicesData[index];
+        let html = `
+            <h3 class="text-4xl font-medium text-center mb-8">${s.title}</h3>
+            <p class="text-xl text-gray-300 text-center mb-12">${s.desc}</p>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                ${s.images.map(src => `<img src="${src}" class="rounded-2xl w-full h-80 object-cover">`).join('')}
+            </div>
+            
+            <h4 class="text-2xl mb-6">Performances Vidéo</h4>
+            <div class="grid md:grid-cols-2 gap-6">
+                ${s.videos.map(id => `
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/${id}" 
+                        frameborder="0" allowfullscreen class="rounded-2xl"></iframe>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById('modal-content').innerHTML = html;
+        document.getElementById('service-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('service-modal').classList.add('hidden');
+    }
+
+    // Défilement automatique fluide
+    setInterval(() => {
+        const scroll = document.getElementById('services-scroll');
+        if (scroll) scroll.scrollBy({ left: 360, behavior: 'smooth' });
+    }, 4500);
+    
+
+    </script>
+    <!-- MODAL -->
+<div id="service-modal" class="hidden fixed inset-0 bg-black/95 z-[200] flex items-center justify-center">
+    <div class="max-w-5xl w-full mx-4 bg-zinc-900 rounded-3xl overflow-hidden">
+        <div class="flex justify-end p-6">
+            <button onclick="closeModal()" class="text-5xl text-gray-400 hover:text-white transition">×</button>
+        </div>
+        <div id="modal-content" class="px-8 pb-12"></div>
+    </div>
+</div>
+<script>
+    let posts = [
+        {
+            username: "Saun.model",
+            video: " https://vm.tiktok.com/ZNRvjLKmP/",
+            caption: "Cover de L’Amour Me Tient  ❤️",
+            tiktok: "https://www.tiktok.com/@saun.model?_r=1&_t=ZN-96xxBwRt1jq",
+            likes: 142
+        },
+        {
+            username: "Laugis 🇨🇲❤️🇩🇪",
+            video: "https://www.tiktok.com/@laugis/video/7646705113045929237?is_from_webapp=1&sender_device=pc&web_id=7647893890070693398",
+            caption: "Challenge #LamourMeTient réussi !",
+            tiktok: "https://www.tiktok.com/@laugis?is_from_webapp=1&sender_device=pc",
+            likes: 200000
+        },
+        {
+            username: "mira cludia",
+            video: "https://www.tiktok.com/@knsamiraclaudia?is_from_webapp=1&sender_device=pc",
+            caption: "Cover de L’Amour Me Tient avec mon petit frère ❤️",
+            tiktok: "https://www.tiktok.com/@knsamiraclaudia/video/7646435887529626887?is_from_webapp=1&sender_device=pc&web_id=7647893890070693398",
+            likes: 385000
+        },
+        {
+            username: "davy3065",
+            video: "https://www.tiktok.com/@davy3055/video/7639695671662038292?is_from_webapp=1&sender_device=pc&web_id=7647893890070693398",
+            caption: "Cover de L’Amour Me Tient avec mon petit frère ❤️",
+            tiktok: "https://www.tiktok.com/@davy3055?is_from_webapp=1&sender_device=pc",
+            likes: 387000
+        },
+    ];
+
+    function renderFeed() {
+        const feed = document.getElementById('fan-feed');
+        feed.innerHTML = '';
+
+        posts.forEach((post, index) => {
+            const html = `
+                <div onclick="window.open('${post.tiktok}', '_blank')" class="min-w-[280px] bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer snap-start">
+                    <img src="${post.video}" class="w-full h-80 object-cover">
+                    <div class="p-5">
+                        <p class="font-medium text-sm">${post.username}</p>
+                        <p class="text-gray-400 text-sm line-clamp-2 mt-1">${post.caption}</p>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-red-400">❤️ ${post.likes}</span>
+                            <span class="text-pink-400 text-xs">Voir sur TikTok →</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            feed.innerHTML += html;
+        });
+    }
+
+    // Publication
+    document.getElementById('post-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('post-username').value || "LoveArmyFan";
+        const video = document.getElementById('post-video').value;
+        const caption = document.getElementById('post-caption').value;
+
+        posts.unshift({
+            username: username,
+            video: video || "https://picsum.photos/id/1015/600/800",
+            caption: caption || "Nouvelle vidéo avec la musique de Valentyno",
+            tiktok: video || "#",
+            likes: 1
+        });
+
+        renderFeed();
+        this.reset();
+        alert("✅ Ta vidéo a été publiée dans la Love Army !");
+    });
+
+    // Initialisation
+    renderFeed();
+</script>
+    
+</body>
+</html>
